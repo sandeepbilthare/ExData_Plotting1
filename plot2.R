@@ -45,7 +45,7 @@ power_consumption_feb <- subset(power_consumption, power_consumption$Date_derive
 
 
 # Plot 2 - time series plot of global active power
-png(filename =  "./figure/plot2.png", width = 480, height = 480, units = "px")
+png(filename =  "plot2.png", width = 480, height = 480, units = "px")
 with(power_consumption_feb, plot(x = Datetime_derived, y = Global_active_power, type="l", xlab="", ylab = "Global Active Power (kilowatts)"))
 # axis(1, at = power_consumption_feb$Datetime_derived[c(1, 1441,2880)], c('Thu', "Fri", "Sat"))
 axis(1, at = as.Date(power_consumption_feb$Datetime_derived), labels=weekdays(power_consumption_feb$Datetime_derived, abbreviate = TRUE))

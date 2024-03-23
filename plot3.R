@@ -51,7 +51,7 @@ power_consumption_feb_submeter <- power_consumption_feb |>
   mutate(name = as.factor(name))
 
 # Plot 3 - time series plot of energy sub metering
-png(filename =  "./figure/plot3.png", width = 480, height = 480, units = "px")
+png(filename =  "plot3.png", width = 480, height = 480, units = "px")
 
 plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, type="l", col = power_consumption_feb_submeter$name, xlab="", ylab = "Energy sub metering")
 dev.off()

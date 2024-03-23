@@ -46,7 +46,7 @@ power_consumption_feb <- subset(power_consumption, power_consumption$Date_derive
 
 # Plot 4
 # This will be a panel plot - 2 * 2
-png(filename =  "./figure/plot4.png", width = 480, height = 480, units = "px")
+png(filename =  "plot4.png", width = 480, height = 480, units = "px")
 
 par(mfcol=c(2,2))
 with(power_consumption_feb, plot(x = Datetime_derived, y = Global_active_power, type="l", xlab="", ylab = "Global Active Power (kilowatts)"))
