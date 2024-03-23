@@ -49,8 +49,18 @@ power_consumption_feb <- subset(power_consumption, power_consumption$Date_derive
 png(filename =  "plot4.png", width = 480, height = 480, units = "px")
 
 par(mfcol=c(2,2))
+# First plot
 with(power_consumption_feb, plot(x = Datetime_derived, y = Global_active_power, type="l", xlab="", ylab = "Global Active Power (kilowatts)"))
-plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, type="l", col = power_consumption_feb_submeter$name, xlab="", ylab = "Energy sub metering")
+#  Second plot
+plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xlab="", ylab = "Energy sub metering", type = "n")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_1, type="l", lwd = 1, col = "darkgray")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_2, type="l", lwd = 1, col = "red")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_3, type="l", lwd = 1, col = "blue")
+# Add a legend
+legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+       col = c("darkgray", "red", "blue"), lty = 1)
+#  Third plot
 with(power_consumption_feb, plot(x = Datetime_derived, y = Voltage, type="l", xlab="datetime", ylab = "Voltage"))
+# Fourth plot
 with(power_consumption_feb, plot(x = Datetime_derived, y = Global_reactive_power, type="l", xlab="datetime", ylab = "Global_reactive_power"))
 dev.off()

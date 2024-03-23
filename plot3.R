@@ -52,6 +52,11 @@ power_consumption_feb_submeter <- power_consumption_feb |>
 
 # Plot 3 - time series plot of energy sub metering
 png(filename =  "plot3.png", width = 480, height = 480, units = "px")
-
-plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, type="l", col = power_consumption_feb_submeter$name, xlab="", ylab = "Energy sub metering")
+plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xlab="", ylab = "Energy sub metering", type = "n")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_1, type="l", lwd = 1, col = "darkgray")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_2, type="l", lwd = 1, col = "red")
+lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_3, type="l", lwd = 1, col = "blue")
+# Add a legend
+legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+       col = c("darkgray", "red", "blue"), lty = 1)
 dev.off()
