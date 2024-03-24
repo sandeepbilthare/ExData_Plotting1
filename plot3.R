@@ -52,7 +52,9 @@ power_consumption_feb_submeter <- power_consumption_feb |>
 
 # Plot 3 - time series plot of energy sub metering
 png(filename =  "plot3.png", width = 480, height = 480, units = "px")
-plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xlab="", ylab = "Energy sub metering", type = "n")
+plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xaxt = "n", xlab="", ylab = "Energy sub metering", type = "n")
+# To change format of x-axis values to weekdays
+axis.POSIXct(1, power_consumption_feb$Datetime_derived, format = "%a")
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_1, type="l", lwd = 1, col = "darkgray")
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_2, type="l", lwd = 1, col = "red")
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_3, type="l", lwd = 1, col = "blue")

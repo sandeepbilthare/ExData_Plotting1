@@ -50,9 +50,15 @@ png(filename =  "plot4.png", width = 480, height = 480, units = "px")
 
 par(mfcol=c(2,2))
 # First plot
-with(power_consumption_feb, plot(x = Datetime_derived, y = Global_active_power, type="l", xlab="", ylab = "Global Active Power (kilowatts)"))
+with(power_consumption_feb, plot(x = Datetime_derived, y = Global_active_power, type="l", xaxt = "n", xlab="", ylab = "Global Active Power (kilowatts)"))
+# To change format of x-axis values to weekdays
+axis.POSIXct(1, power_consumption_feb$Datetime_derived, format = "%a")
+
 #  Second plot
-plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xlab="", ylab = "Energy sub metering", type = "n")
+plot(x = power_consumption_feb_submeter$Datetime_derived, y = power_consumption_feb_submeter$submetering, xaxt = "n",xlab="", ylab = "Energy sub metering", type = "n")
+# To change format of x-axis values to weekdays
+axis.POSIXct(1, power_consumption_feb$Datetime_derived, format = "%a")
+
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_1, type="l", lwd = 1, col = "darkgray")
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_2, type="l", lwd = 1, col = "red")
 lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_metering_3, type="l", lwd = 1, col = "blue")
@@ -60,7 +66,13 @@ lines(x = power_consumption_feb$Datetime_derived, y = power_consumption_feb$Sub_
 legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        col = c("darkgray", "red", "blue"), lty = 1)
 #  Third plot
-with(power_consumption_feb, plot(x = Datetime_derived, y = Voltage, type="l", xlab="datetime", ylab = "Voltage"))
+with(power_consumption_feb, plot(x = Datetime_derived, y = Voltage, type="l", xaxt ="n", xlab="datetime", ylab = "Voltage"))
+# To change format of x-axis values to weekdays
+axis.POSIXct(1, power_consumption_feb$Datetime_derived, format = "%a")
+
 # Fourth plot
-with(power_consumption_feb, plot(x = Datetime_derived, y = Global_reactive_power, type="l", xlab="datetime", ylab = "Global_reactive_power"))
+with(power_consumption_feb, plot(x = Datetime_derived, y = Global_reactive_power, type="l", xaxt ="n", xlab="datetime", ylab = "Global_reactive_power"))
+# To change format of x-axis values to weekdays
+axis.POSIXct(1, power_consumption_feb$Datetime_derived, format = "%a")
+
 dev.off()
